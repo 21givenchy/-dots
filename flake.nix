@@ -8,10 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    # Using older Hyprland version with legacyRenderer support
+    hyprland.url = "github:hyprwm/Hyprland/v0.34.0";
   };
   
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -19,9 +22,7 @@
         inherit system;
         modules = [
           ./configuration.nix  # Your main config with Hyprland and Qtile
-          home-manager.nixosModules.home-manager
-        #  hyprland.nixosModules.default  # Official Hyprland module
-
+          hyprland.nixosModules.default  # Official Hyprland module
           home-manager.nixosModules.home-manager
           ({ config, lib, ... }: {
             home-manager = {

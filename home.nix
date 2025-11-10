@@ -2,7 +2,7 @@
 
 {
   imports = [
- #    ./modules/hyprland.nix
+    ./modules/hyprland.nix
     ./modules/waybar.nix
     ./modules/themes.nix
     ./modules/programs.nix
