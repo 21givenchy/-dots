@@ -48,6 +48,8 @@ services.pulseaudio.enable = false;
   environment.systemPackages = with pkgs; [
        wireplumber   brightnessctl fuse  vim git libsForQt5.qt5ct qt6ct  gvfs bibata-cursors  mtpfs jmtpfs perl538Packages.ImageExifTool
        sbclPackages.selenium arp-scan-rs jetbrains.datagrip
+       # Hyprland dependencies
+       waybar dunst wofi hyprpaper swww grim slurp wl-clipboard pavucontrol
   ];
 
   virtualisation.docker = {
@@ -85,7 +87,13 @@ default-address-pools = [
     sddm.enable = true;
     sddm.wayland.enable = true;
     sddm.theme = "breeze";
-    defaultSession = "qtile";
+    defaultSession = "hyprland";
+  };
+  
+  # Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
 
   services.xserver.enable = true;
