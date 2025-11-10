@@ -5,11 +5,22 @@
     enable = true;
     xwayland.enable = true;
     
+    # Enable legacy renderer via package override
+    package = pkgs.hyprland.override {
+      enableXWayland = true;
+      legacyRenderer = true;
+    };
+    
     settings = {
       # Monitor configuration
       monitor = ",preferred,auto,1";
       
       # Enable legacy renderer for older hardware
+      render = {
+        explicit_sync = 0;
+        explicit_sync_kms = 0;
+      };
+      
       misc = {
         vfr = true;
         disable_hyprland_logo = true;

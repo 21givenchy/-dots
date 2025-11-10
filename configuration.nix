@@ -94,6 +94,10 @@ default-address-pools = [
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    package = pkgs.hyprland.override {
+      enableXWayland = true;
+      legacyRenderer = true;
+    };
   };
 
   services.xserver.enable = true;

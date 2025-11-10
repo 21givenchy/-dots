@@ -47,6 +47,17 @@ sudo nixos-rebuild build --flake .#imdead
 
 This configuration includes several settings to support legacy hardware:
 
+### Package Override
+
+The legacy renderer is enabled via package override in both system and home-manager configurations:
+
+```nix
+package = pkgs.hyprland.override {
+  enableXWayland = true;
+  legacyRenderer = true;
+};
+```
+
 ### Environment Variables Set
 
 - `WLR_RENDERER_ALLOW_SOFTWARE=1` - Allow software rendering

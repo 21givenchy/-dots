@@ -55,6 +55,21 @@ sudo nixos-rebuild switch --flake .#imdead
 
 These are already set in your configuration for legacy hardware support:
 
+### Legacy Renderer Override
+
+The most important configuration is the package override that enables the legacy renderer:
+
+```nix
+package = pkgs.hyprland.override {
+  enableXWayland = true;
+  legacyRenderer = true;
+};
+```
+
+This is set in both `configuration.nix` (system-level) and `modules/hyprland.nix` (user-level).
+
+### Environment Variables
+
 ```bash
 WLR_RENDERER_ALLOW_SOFTWARE=1  # Enable software rendering
 WLR_NO_HARDWARE_CURSORS=1      # Disable hardware cursors
